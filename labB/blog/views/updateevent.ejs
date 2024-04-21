@@ -1,0 +1,43 @@
+<!-- updateevent.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Pass a JavaScript variable to a partial in EJS -->
+  <%- include('partials/head.ejs', { title: "Update page" }) %>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="content">
+    <div class="update">
+      <h2>Update Event</h2>
+      <form action="/single-event/<%= event._id %>?_method=PUT" method="POST">
+          
+     
+        <label>Title:</label>
+        <input type="text" value="<%= event.title %>" id="title" name="title" required />
+
+        <label for="description">description:</label>
+        <textarea id="description" name="description" rows="4" required><%= event.description %></textarea>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required value="<%= formatDate(event.date) %>" />
+
+        <label>Location:</label>
+        <input type="text" value="<%= event.location %>" id="location" name="location" required />
+
+        <button type="submit">Update Event</button>
+      </form>
+    </div>
+  </div>
+
+  <% 
+  function formatDate(dateString) {
+      const date = new Date(dateString);
+      // Format the date as desired (e.g., YYYY-MM-DD)
+      const formattedDate = date.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+      return formattedDate;
+  } 
+  %>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

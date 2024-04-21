@@ -1,0 +1,41 @@
+<!-- addevent.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Pass a JavaScript variable to a partial in EJS -->
+  <%- include('partials/head.ejs', { title: "Add Event" }) %>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="content">
+      <div class="create">
+        <h2>Add a New Event</h2>
+        <form action="/addEvent" method="POST">
+
+          <label>Title:</label
+          ><input type="text" value="" id="title" name="title" required />
+
+          <label for="description">Description:</label>
+          <textarea
+            value=""
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea
+          ><br />
+
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required /><br />
+
+          <label>Location:</label
+            ><input type="text" value="" id="location" name="location" required />
+
+          <button type="submit">Add Event</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>
